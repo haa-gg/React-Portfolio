@@ -27,7 +27,7 @@ class Projects extends Component {
                     {
                         PROJECTS.map(PROJECT => {
                             return (
-                               <Project key={PROJECT.is} project={PROJECT} />
+                               <Project key={PROJECT.id} project={PROJECT} />
                             )
                         })
                     }
