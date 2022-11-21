@@ -1,7 +1,8 @@
-import { Component } from "react";
+import React, { Component } from 'react';
 import Projects from './Projects';
+import SocialProfiles from './SocialProfiles';
+import Jokes from './Jokes';
 import Title from './Title';
-import SocialProfiles from "./SocialProfiles";
 
 class App extends Component {
     state = {displayBio:false};
@@ -33,6 +34,8 @@ class App extends Component {
                 <Projects />
                 <hr />
                 <SocialProfiles />
+                <hr />
+                <Jokes />
             </div>
         )
     }
