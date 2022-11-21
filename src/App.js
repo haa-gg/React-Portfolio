@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Projects from './Projects';
+import Title from './Title';
 import SocialProfiles from "./SocialProfiles";
 
 class App extends Component {
@@ -14,7 +15,7 @@ class App extends Component {
         return (
             <div>
                 <h1>Hi, I'm Glendon</h1>
-                <p>I'm a web dev</p>
+            <Title />
                 {
                     this.state.displayBio ? (
                         <div>
