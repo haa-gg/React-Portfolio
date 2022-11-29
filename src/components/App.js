@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Projects from './Projects';
 import SocialProfiles from './SocialProfiles';
-import Jokes from './Jokes';
 import Title from './Title';
 
 class App extends Component {
@@ -34,10 +33,10 @@ class App extends Component {
                 <Projects />
                 <hr />
                 <SocialProfiles />
-                <hr />
-                <Jokes />
+                
             </div>
         )
     }
 }
+
 export default App;
