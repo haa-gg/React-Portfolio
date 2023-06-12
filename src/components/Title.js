@@ -1,46 +1,45 @@
 import React, { Component } from 'react';
 
 const TITLES = [
-    'a software engineer',
-    'a skiier',
-    'a laser engraving enthusiast'
-]
+  'a frontend dev',
+  'a digital artist',
+  'a laser engraving enthusiast',
+  'an adventure seeker'
+];
 
 class Title extends Component {
-    state = { titleIndex: 0, fadeIn: true };
+  state = { titleIndex: 0, fadeIn: true };
 
-    componentDidMount() {
-        //   console.log('Title comp mounted');
+  componentDidMount() {
+    this.timeout = setTimeout(() => this.setState({ fadeIn: false }), 2000);
 
-        this.timeout = setTimeout(() => this.setState({ fadeIn: false }), 2000);
-        this.animateTitles(); 
-    }
+    this.animateTitles();
+  }
 
-    componentWillUnmount() {
-        // console.log('Title comp will unmount');
+  componentWillUnmount() {
+    clearInterval(this.titleInterval);
+    clearTimeout(this.timeout);
+  }
 
-        clearInterval(this.titleInterval);
-        clearTimeout(this.timeout);
-    }
+  animateTitles = () => {
+    this.titleInterval = setInterval(() => {
+      const titleIndex = (this.state.titleIndex + 1) % TITLES.length;
 
-    animateTitles = () => {
-        this.titleInterval = setInterval(() => {
-            const titleIndex = (this.state.titleIndex + 1) % TITLES.length;
+      this.setState({ titleIndex, fadeIn: true });
 
-            this.setState({ titleIndex, fadeIn: true });
-            this.timeout = setTimeout(() => this.setState({ fadeIn: false }), 2000);
-        }, 4000);
+      this.timeout = setTimeout(() => this.setState({ fadeIn: false }), 2000);
+    }, 4000);
+  }
 
-        // console.log('this.titleInterval', this.titleInterval);
-    }
-    render() {
-        const { fadeIn, titleIndex } = this.state;
-        const title = TITLES[this.state.titleIndex];
+  render() {
+    const { fadeIn, titleIndex } = this.state;
 
-        return (
-            <p className={fadeIn ? 'title-fade-in' : 'title-fade-out'}>I am {title}</p>
-        )
-    }
+    const title = TITLES[titleIndex];
+
+    return (
+      <p className={fadeIn ? 'title-fade-in' : 'title-fade-out'}>I am {title}</p>
+    )
+  }
 }
 
 export default Title;
